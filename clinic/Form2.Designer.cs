@@ -2,15 +2,8 @@
 {
     partial class AddPatient
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
@@ -38,6 +27,8 @@
             this.genderCB = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.addPbtn = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.phoneTB = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +62,7 @@
             // patientCancel
             // 
             this.patientCancel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientCancel.Location = new System.Drawing.Point(180, 271);
+            this.patientCancel.Location = new System.Drawing.Point(180, 351);
             this.patientCancel.Name = "patientCancel";
             this.patientCancel.Size = new System.Drawing.Size(75, 23);
             this.patientCancel.TabIndex = 4;
@@ -121,9 +112,41 @@
             this.genderCB.TabIndex = 11;
             this.genderCB.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(17, 225);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(88, 17);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Phone Number";
+            // 
+            // phoneTB
+            // 
+            this.phoneTB.Location = new System.Drawing.Point(20, 245);
+            this.phoneTB.Name = "phoneTB";
+            this.phoneTB.Size = new System.Drawing.Size(266, 20);
+            this.phoneTB.TabIndex = 14;
+            // 
+            // addPbtn
+            // 
+            this.addPbtn.BackColor = System.Drawing.Color.DarkCyan;
+            this.addPbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addPbtn.ForeColor = System.Drawing.Color.White;
+            this.addPbtn.Location = new System.Drawing.Point(52, 351);
+            this.addPbtn.Name = "addPbtn";
+            this.addPbtn.Size = new System.Drawing.Size(75, 23);
+            this.addPbtn.TabIndex = 12;
+            this.addPbtn.Text = "Save";
+            this.addPbtn.UseVisualStyleBackColor = false;
+            this.addPbtn.Click += new System.EventHandler(this.addPbtn_Click);
+            // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Cornsilk;
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.phoneTB);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.addPbtn);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.genderCB);
@@ -135,29 +158,16 @@
             this.panel1.Controls.Add(this.ageTB);
             this.panel1.Location = new System.Drawing.Point(2, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(313, 344);
+            this.panel1.Size = new System.Drawing.Size(313, 420);
             this.panel1.TabIndex = 12;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // addPbtn
-            // 
-            this.addPbtn.BackColor = System.Drawing.Color.DarkCyan;
-            this.addPbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addPbtn.ForeColor = System.Drawing.Color.White;
-            this.addPbtn.Location = new System.Drawing.Point(52, 271);
-            this.addPbtn.Name = "addPbtn";
-            this.addPbtn.Size = new System.Drawing.Size(75, 23);
-            this.addPbtn.TabIndex = 12;
-            this.addPbtn.Text = "Save";
-            this.addPbtn.UseVisualStyleBackColor = false;
-            this.addPbtn.Click += new System.EventHandler(this.addPbtn_Click);
             // 
             // AddPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(315, 342);
+            this.ClientSize = new System.Drawing.Size(315, 420);
             this.Controls.Add(this.panel1);
             this.Name = "AddPatient";
             this.Text = "Add Patient";
@@ -165,7 +175,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -180,5 +189,7 @@
         private System.Windows.Forms.ComboBox genderCB;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button addPbtn;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox phoneTB;
     }
 }

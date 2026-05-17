@@ -140,7 +140,8 @@ namespace clinic
             int age = Convert.ToInt32(row.Cells["Age"].Value);
             string gender = row.Cells["Gender"].Value.ToString();
 
-            EditPatient editForm = new EditPatient(patientId, fullName, age, gender);
+            string phoneNumber = row.Cells["PhoneNumber"].Value?.ToString() ?? "";
+            EditPatient editForm = new EditPatient(patientId, fullName, age, gender, phoneNumber);
             editForm.ShowDialog();
             LoadPatients();
         }
@@ -203,7 +204,15 @@ namespace clinic
 
         private void button8_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Log Out",
+        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            if (result == DialogResult.Yes)
+            {
+                LoginForm login = new LoginForm();
+                login.Show();
+                this.Close();
+            }
         }
         private void LoadAppointments()
         {

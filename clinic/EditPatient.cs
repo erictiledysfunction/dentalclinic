@@ -10,7 +10,7 @@ namespace clinic
         private string _gender;
         private string connectionString = "Server=localhost\\SQLEXPRESS;Database=CLINIC_DB;Trusted_Connection=True;";
 
-        public EditPatient(int patientId, string fullName, int age, string gender)
+        public EditPatient(int patientId, string fullName, int age, string gender, string phoneNumber)
         {
             InitializeComponent();
             _patientId = patientId;
@@ -18,15 +18,13 @@ namespace clinic
 
             nameTB.Text = fullName;
             ageTB.Text = age.ToString();
+            phoneTB.Text = phoneNumber;
         }
 
         private void EditPatient_Load(object sender, EventArgs e)
         {
-            // Add items first
             genderCB.Items.Add("Male");
             genderCB.Items.Add("Female");
-
-            // Then select after items exist
             genderCB.SelectedItem = _gender;
         }
 
@@ -62,18 +60,31 @@ namespace clinic
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(phoneTB.Text))
+            {
+                MessageBox.Show("Please enter a phone number.");
+                return;
+            }
+
+            if (phoneTB.Text.Length > 15)
+            {
+                MessageBox.Show("Phone number is too long.");
+                return;
+            }
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(
-                        "UPDATE dbo.Patients SET FullName = @Name, Age = @Age, Gender = @Gender WHERE PatientID = @ID",
+                        "UPDATE dbo.Patients SET FullName = @Name, Age = @Age, Gender = @Gender, PhoneNumber = @Phone WHERE PatientID = @ID",
                         conn
                     );
                     cmd.Parameters.AddWithValue("@Name", nameTB.Text.Trim());
                     cmd.Parameters.AddWithValue("@Age", age);
                     cmd.Parameters.AddWithValue("@Gender", genderCB.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@Phone", phoneTB.Text.Trim());
                     cmd.Parameters.AddWithValue("@ID", _patientId);
                     cmd.ExecuteNonQuery();
                 }
@@ -91,14 +102,8 @@ namespace clinic
             this.Close();
         }
 
-        private void ageTB_TextChanged(object sender, EventArgs e)
-        {
+        private void ageTB_TextChanged(object sender, EventArgs e) { }
 
-        }
-
-        private void nameTB_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void nameTB_TextChanged(object sender, EventArgs e) { }
     }
 }

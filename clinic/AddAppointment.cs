@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace clinic
 {
@@ -16,22 +15,23 @@ namespace clinic
 
         private void AddAppointment_Load(object sender, EventArgs e)
         {
-            // Load patients into dropdown
             LoadPatients();
 
-            // Status options
             statusCB.Items.AddRange(new string[] {
-                "Scheduled", "Cancelled", "Completed"
-            });
+        "Scheduled", "Cancelled", "Completed"
+    });
 
-            // Treatment options
             treatmentCB.Items.AddRange(new string[] {
-                "Cleaning", "Extraction", "Braces", "Root Canal",
-                "Filling", "Whitening", "Crown", "Dentures", "X-Ray"
-            });
+        "Cleaning", "Extraction", "Braces", "Root Canal",
+        "Filling", "Whitening", "Crown", "Dentures", "X-Ray"
+    });
 
-            // Default date to today
             scheduleDTP.Value = DateTime.Now;
+
+            // Default time to 8AM
+            timePicker.Value = DateTime.Today.AddHours(8);
+            timePicker.MinDate = DateTime.Today.AddHours(8);
+            timePicker.MaxDate = DateTime.Today.AddHours(16);
         }
 
         private void LoadPatients()
@@ -55,51 +55,6 @@ namespace clinic
             patientCB.ValueMember = "PatientID";
         }
 
-        private void btnAddAppointment_Click(object sender, EventArgs e)
-        {
-            if (patientCB.SelectedItem == null)
-            {
-                MessageBox.Show("Please select a patient.");
-                return;
-            }
-
-            if (statusCB.SelectedItem == null)
-            {
-                MessageBox.Show("Please select a status.");
-                return;
-            }
-
-            if (treatmentCB.SelectedItem == null)
-            {
-                MessageBox.Show("Please select a treatment.");
-                return;
-            }
-
-            int patientId = ((PatientItem)patientCB.SelectedItem).PatientID;
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(
-                    "INSERT INTO dbo.Appointments (PatientID, Schedule, Status, Treatment) VALUES (@PatientID, @Schedule, @Status, @Treatment)",
-                    conn
-                );
-                cmd.Parameters.AddWithValue("@PatientID", patientId);
-                cmd.Parameters.AddWithValue("@Schedule", scheduleDTP.Value);
-                cmd.Parameters.AddWithValue("@Status", statusCB.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Treatment", treatmentCB.SelectedItem.ToString());
-                cmd.ExecuteNonQuery();
-            }
-
-            MessageBox.Show("Appointment added!");
-            this.Close();
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnAddAppointment_Click_1(object sender, EventArgs e)
         {
             if (patientCB.SelectedItem == null)
@@ -120,9 +75,27 @@ namespace clinic
                 return;
             }
 
+            // Validate time is between 8AM and 4PM
+            int selectedHour = timePicker.Value.Hour;
+            if (selectedHour < 8 || selectedHour > 16)
+            {
+                MessageBox.Show("Please select a time between 8 AM and 4 PM.");
+                return;
+            }
+
             try
             {
                 int patientId = ((PatientItem)patientCB.SelectedItem).PatientID;
+
+                // Combine date and hour only, minutes set to 0
+                DateTime combinedSchedule = new DateTime(
+                    scheduleDTP.Value.Year,
+                    scheduleDTP.Value.Month,
+                    scheduleDTP.Value.Day,
+                    timePicker.Value.Hour,
+                    0,
+                    0
+                );
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
@@ -132,7 +105,7 @@ namespace clinic
                         conn
                     );
                     cmd.Parameters.AddWithValue("@PatientID", patientId);
-                    cmd.Parameters.AddWithValue("@Schedule", scheduleDTP.Value);
+                    cmd.Parameters.AddWithValue("@Schedule", combinedSchedule);
                     cmd.Parameters.AddWithValue("@Status", statusCB.SelectedItem.ToString());
                     cmd.Parameters.AddWithValue("@Treatment", treatmentCB.SelectedItem.ToString());
                     cmd.ExecuteNonQuery();
@@ -158,7 +131,6 @@ namespace clinic
         }
     }
 
-    
     public class PatientItem
     {
         public int PatientID { get; set; }

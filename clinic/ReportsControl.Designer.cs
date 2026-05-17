@@ -32,13 +32,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblTotalPatients = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblAppointmentsToday = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblCompletedTreatments = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -48,9 +51,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.lblTotalPatients = new System.Windows.Forms.Label();
-            this.lblAppointmentsToday = new System.Windows.Forms.Label();
-            this.lblCompletedTreatments = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -94,7 +94,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.panel1.BackColor = System.Drawing.Color.PaleTurquoise;
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.lblTotalPatients);
             this.panel1.Location = new System.Drawing.Point(93, 136);
@@ -102,15 +102,57 @@
             this.panel1.Size = new System.Drawing.Size(200, 133);
             this.panel1.TabIndex = 12;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(57, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Total Patients";
+            // 
+            // lblTotalPatients
+            // 
+            this.lblTotalPatients.AutoSize = true;
+            this.lblTotalPatients.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPatients.Location = new System.Drawing.Point(69, 41);
+            this.lblTotalPatients.Name = "lblTotalPatients";
+            this.lblTotalPatients.Size = new System.Drawing.Size(56, 65);
+            this.lblTotalPatients.TabIndex = 24;
+            this.lblTotalPatients.Text = "0";
+            this.lblTotalPatients.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.NavajoWhite;
+            this.panel2.BackColor = System.Drawing.Color.Plum;
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.lblAppointmentsToday);
             this.panel2.Location = new System.Drawing.Point(484, 136);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 133);
             this.panel2.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(37, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(128, 17);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Appointments Today";
+            // 
+            // lblAppointmentsToday
+            // 
+            this.lblAppointmentsToday.AutoSize = true;
+            this.lblAppointmentsToday.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAppointmentsToday.Location = new System.Drawing.Point(70, 41);
+            this.lblAppointmentsToday.Name = "lblAppointmentsToday";
+            this.lblAppointmentsToday.Size = new System.Drawing.Size(56, 65);
+            this.lblAppointmentsToday.TabIndex = 25;
+            this.lblAppointmentsToday.Text = "0";
+            this.lblAppointmentsToday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
@@ -122,15 +164,16 @@
             this.panel3.Size = new System.Drawing.Size(200, 133);
             this.panel3.TabIndex = 13;
             // 
-            // label2
+            // lblCompletedTreatments
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(57, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Total Patients";
+            this.lblCompletedTreatments.AutoSize = true;
+            this.lblCompletedTreatments.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompletedTreatments.Location = new System.Drawing.Point(73, 41);
+            this.lblCompletedTreatments.Name = "lblCompletedTreatments";
+            this.lblCompletedTreatments.Size = new System.Drawing.Size(56, 65);
+            this.lblCompletedTreatments.TabIndex = 26;
+            this.lblCompletedTreatments.Text = "0";
+            this.lblCompletedTreatments.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -159,16 +202,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(250, 2);
             this.panel4.TabIndex = 12;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(37, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 17);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Appointments Today";
             // 
             // label3
             // 
@@ -260,39 +293,6 @@
             this.label14.TabIndex = 23;
             this.label14.Text = "X-ray";
             // 
-            // lblTotalPatients
-            // 
-            this.lblTotalPatients.AutoSize = true;
-            this.lblTotalPatients.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPatients.Location = new System.Drawing.Point(69, 41);
-            this.lblTotalPatients.Name = "lblTotalPatients";
-            this.lblTotalPatients.Size = new System.Drawing.Size(56, 65);
-            this.lblTotalPatients.TabIndex = 24;
-            this.lblTotalPatients.Text = "0";
-            this.lblTotalPatients.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblAppointmentsToday
-            // 
-            this.lblAppointmentsToday.AutoSize = true;
-            this.lblAppointmentsToday.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAppointmentsToday.Location = new System.Drawing.Point(70, 41);
-            this.lblAppointmentsToday.Name = "lblAppointmentsToday";
-            this.lblAppointmentsToday.Size = new System.Drawing.Size(56, 65);
-            this.lblAppointmentsToday.TabIndex = 25;
-            this.lblAppointmentsToday.Text = "0";
-            this.lblAppointmentsToday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblCompletedTreatments
-            // 
-            this.lblCompletedTreatments.AutoSize = true;
-            this.lblCompletedTreatments.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompletedTreatments.Location = new System.Drawing.Point(73, 41);
-            this.lblCompletedTreatments.Name = "lblCompletedTreatments";
-            this.lblCompletedTreatments.Size = new System.Drawing.Size(56, 65);
-            this.lblCompletedTreatments.TabIndex = 26;
-            this.lblCompletedTreatments.Text = "0";
-            this.lblCompletedTreatments.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -378,7 +378,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Cornsilk;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.pictureBox7);

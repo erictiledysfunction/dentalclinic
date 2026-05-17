@@ -82,7 +82,7 @@ namespace clinic
 
         private void addPbtn_Click(object sender, EventArgs e)
         {
-       
+
             if (string.IsNullOrWhiteSpace(nameTB.Text))
             {
                 MessageBox.Show("Please enter a name.");
@@ -94,8 +94,6 @@ namespace clinic
                 MessageBox.Show("Please enter age.");
                 return;
             }
-
-            
 
             if (ageTB.Text.Length > 3)
             {
@@ -115,27 +113,35 @@ namespace clinic
                 return;
             }
 
-            string gender = genderCB.SelectedItem.ToString();
+            if (string.IsNullOrWhiteSpace(phoneTB.Text))
+            {
+                MessageBox.Show("Please enter a phone number.");
+                return;
+            }
 
+            if (phoneTB.Text.Length > 15)
+            {
+                MessageBox.Show("Phone number is too long.");
+                return;
+            }
+
+            string gender = genderCB.SelectedItem.ToString();
             string connectionString = @"Server=localhost\SQLEXPRESS;Database=CLINIC_DB;Trusted_Connection=true;";
 
             using (SqlConnection eric = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO dbo.Patients (FullName, Age, Gender) VALUES (@Name, @Age, @Gender)";
-
+                string query = "INSERT INTO dbo.Patients (FullName, Age, Gender, PhoneNumber) VALUES (@Name, @Age, @Gender, @Phone)";
                 SqlCommand cmd = new SqlCommand(query, eric);
-
                 cmd.Parameters.AddWithValue("@Name", nameTB.Text.Trim());
                 cmd.Parameters.AddWithValue("@Age", age);
                 cmd.Parameters.AddWithValue("@Gender", gender);
-
+                cmd.Parameters.AddWithValue("@Phone", phoneTB.Text.Trim());
                 eric.Open();
                 cmd.ExecuteNonQuery();
             }
 
             MessageBox.Show("Patient Added!");
             this.Close();
-        
-    }
+        }
     }
 }
